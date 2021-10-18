@@ -31,7 +31,7 @@ const Page = () => {
         align="center"
       >
         {/* eslint-disable-next-line react/no-unescaped-entities */}
-        Hello, I'm a fullstack developer based in Brazil!
+        Hello, I&apos;m a fullstack developer based in Brazil!
       </Box>
       <Section delay={0.1}>
         <Box display={{ md: "flex" }}>
@@ -63,35 +63,22 @@ const Page = () => {
           <br />
 
           <p>
-            {/* eslint-disable-next-line react/no-unescaped-entities */}
-            I'm a fullstack developer from Brazil, working specifically with
-            NodeJS, Python, React, Typescript and .NET
+            I&apos;m a fullstack developer from Brazil, working specifically with NodeJS, Python, React, Typescript and .NET
           </p>
           <br />
           <p>
-            Though I am mostly focused in these technologies, I truly believe
-            {/* eslint-disable-next-line react/no-unescaped-entities */}
-            that developers should see tech as tools. If you're lost on a beach
-            {/* eslint-disable-next-line react/no-unescaped-entities */}
-            and you need to write a message to a plane, you won't use the most
-            {/* eslint-disable-next-line react/no-unescaped-entities */}
-            modern pen to do it. You won't use an iPad to do it. You'll use
-            stick, stones and palm leaves! 🏝
+            Though I am mostly focused in these technologies, I truly believe that developers should see tech as tools. If you&apos;re lost on a beach
+            and you need to write a message to a plane, you won&apos;t use the most modern pen to do it. You won&apos;t use an iPad to do it. You&apos;ll use sticks, stones and palm leaves! 🏝
           </p>
           <br />
           <p>
-            To ensure a nice final product, I really like write tests. For me
-            {/* eslint-disable-next-line react/no-unescaped-entities */}
-            TDD is one of the best ways to make sure you won't have that many
-            {/* eslint-disable-next-line react/no-unescaped-entities */}
-            bugs in production (though, you'll 🤣)
+            To ensure a nice final product, I really like to write tests. For me TDD is one of the best ways to make sure you won&apos;t have that many bugs in production (though, you will 🤣)
           </p>
           <br />
         </Box>
         <Box flexGrow={1} mt="10px">
           <p>
-            Want to say hi, see my code or just read some awesome tweets? Follow
-            me up on one of my links
+            Want to say hi, see my code or just read some awesome tweets? Follow me up on one of my links
           </p>
           <br />
           <p>See you! 👀</p>
