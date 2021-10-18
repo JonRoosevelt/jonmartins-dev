@@ -4,7 +4,7 @@ import type { AppContext } from "next/app";
 
 type Props = {
   children: React.ReactNode;
-  router: AppContext;
+  router: AppContext["router"];
 };
 
 const Main = ({ children }: Props) => {

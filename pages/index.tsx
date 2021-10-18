@@ -54,29 +54,36 @@ const Page = () => {
           </Box>
         </Box>
       </Section>
-      <Section developer={0.2}>
+      <Section delay={0.2}>
         <Heading as="h2" mt="50px" variant="section-title">
           Hello
         </Heading>
         <Box flexGrow={1} mt="20px">
           <p>Hello, my name is Jon Martins 👋🏽</p>
           <br />
+
           <p>
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
             I'm a fullstack developer from Brazil, working specifically with
             NodeJS, Python, React, Typescript and .NET
           </p>
           <br />
           <p>
-            Though I am mostly focused in these technologies, I trully believe
+            Though I am mostly focused in these technologies, I truly believe
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
             that developers should see tech as tools. If you're lost on a beach
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
             and you need to write a message to a plane, you won't use the most
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
             modern pen to do it. You won't use an iPad to do it. You'll use
             stick, stones and palm leaves! 🏝
           </p>
           <br />
           <p>
             To ensure a nice final product, I really like write tests. For me
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
             TDD is one of the best ways to make sure you won't have that many
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
             bugs in production (though, you'll 🤣)
           </p>
           <br />
