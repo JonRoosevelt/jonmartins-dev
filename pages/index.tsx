@@ -72,7 +72,7 @@ const Page = () => {
           </p>
           <br />
           <p>
-            To ensure a nice final product, I really like to write tests. For me TDD is one of the best ways to make sure you won&apos;t have that many bugs in production (though, you will 🤣)
+            To ensure a nice final product, I really like to write tests. For me TDD is one of the best ways to make sure you won&apos;t have that many bugs in production - though, you will 🤣
           </p>
           <br />
         </Box>
