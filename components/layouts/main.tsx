@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Navbar from "./Navbar";
 import { Box, Container } from "@chakra-ui/react";
 import type { AppContext } from "next/app";
 
@@ -15,6 +16,7 @@ const Main = ({ children }: Props) => {
         <title>Jon Martins - Homepage</title>
       </Head>
       <Container maxW="container.md" pt={14}>
+        <Navbar />
         {children}
       </Container>
     </Box>
