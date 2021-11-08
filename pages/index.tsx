@@ -11,7 +11,7 @@ import {
   Icon,
 } from "@chakra-ui/react";
 import React from "react";
-import Section from "../components/layouts/section";
+import Section from "../components/layouts/Section";
 import {
   IoLogoTwitter,
   IoLogoInstagram,

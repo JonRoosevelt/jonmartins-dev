@@ -4,11 +4,11 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { ParsedUrlQuery } from "querystring";
 import Head from "next/head";
 import React from "react";
-import Section from "../../components/layouts/section";
 import marked from "marked";
 import matter from "gray-matter";
 import styled from "@emotion/styled";
 import SectionHeader from "../../components/layouts/SectionHeader";
+import Section from "../../components/layouts/Section";
 
 type PostProps = {
   htmlString: string;
