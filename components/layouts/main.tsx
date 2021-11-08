@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { Box, Container } from "@chakra-ui/react";
 import type { AppContext } from "next/app";
-
+import Navbar from "./Navbar";
 type Props = {
   children: React.ReactNode;
   router: AppContext["router"];
@@ -15,7 +15,10 @@ const Main = ({ children }: Props) => {
         <title>Jon Martins - Homepage</title>
       </Head>
       <Container maxW="container.md" pt={14}>
-        {children}
+        <Container>
+          <Navbar />
+          {children}
+        </Container>
       </Container>
     </Box>
   );
