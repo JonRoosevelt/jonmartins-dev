@@ -16,8 +16,10 @@ const Main = ({ children }: Props) => {
         <title>Jon Martins - Homepage</title>
       </Head>
       <Container maxW="container.md" pt={14}>
-        <Navbar />
-        {children}
+        <Container>
+          <Navbar />
+          {children}
+        </Container>
       </Container>
     </Box>
   );
