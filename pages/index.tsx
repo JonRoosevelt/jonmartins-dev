@@ -3,6 +3,7 @@ import {
   Box,
   Heading,
   Img,
+  SimpleGrid,
   List,
   ListItem,
   Link,
@@ -17,16 +18,21 @@ import {
   IoLogoGithub,
   IoLogoLinkedin,
 } from "react-icons/io5";
-import SectionHeader from "../components/layouts/SectionHeader";
 
 const Page = () => {
   const jonImage = "jon.jpeg";
   return (
-    <>
-      <SectionHeader
-        message="Hello, I'm a fullstack developer based in Brazil!
-"
-      />
+    <Container>
+      <Box
+        borderRadius="lg"
+        bg="rgba(255,255,255,0.1)"
+        p={3}
+        mb={6}
+        align="center"
+      >
+        {/* eslint-disable-next-line react/no-unescaped-entities */}
+        Hello, I&apos;m a fullstack developer based in Brazil!
+      </Box>
       <Section delay={0.1}>
         <Box display={{ md: "flex" }}>
           <Box>
@@ -151,7 +157,7 @@ const Page = () => {
           </Link>
         </Box>
       </Section>
-    </>
+    </Container>
   );
 };
 
