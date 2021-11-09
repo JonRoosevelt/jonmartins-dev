@@ -9,6 +9,7 @@ import {
   Link,
   Button,
   Icon,
+  VStack,
 } from "@chakra-ui/react";
 import React from "react";
 import Section from "../components/layouts/Section";
@@ -19,8 +20,14 @@ import {
   IoLogoLinkedin,
 } from "react-icons/io5";
 import SectionHeader from "../components/layouts/SectionHeader";
+import { GetStaticProps } from "next";
+import { GetBlogPosts } from "./blog/get-blog-posts";
 
-const Page = () => {
+type Props = {
+  blogPosts: string[];
+};
+
+const Page = ({ blogPosts }: Props) => {
   const jonImage = "jon.jpeg";
   return (
     <Container>
@@ -145,11 +152,21 @@ const Page = () => {
           <Heading as="h4" variant="section-title">
             Blog posts
           </Heading>
-          <Link href="/blog/my-first-post">
-            <Button variant="ghost" colorScheme="teal">
-              My First post
-            </Button>
-          </Link>
+          <VStack mt={5} alignItems="start">
+            {blogPosts &&
+              blogPosts.map((blogPost, index) => (
+                <Link key={index} href={blogPost}>
+                  <Button
+                    h={0}
+                    variant="ghost"
+                    colorScheme="teal"
+                    textTransform="capitalize"
+                  >
+                    {formatBlogPost(blogPost)}
+                  </Button>
+                </Link>
+              ))}
+          </VStack>
         </Box>
       </Section>
     </Container>
@@ -157,3 +174,16 @@ const Page = () => {
 };
 
 export default Page;
+
+export const getStaticProps: GetStaticProps<Props> = () => {
+  const blogPosts = GetBlogPosts().reverse();
+  return {
+    props: {
+      blogPosts,
+    },
+  };
+};
+
+const formatBlogPost = (blogPost: string): string => {
+  return blogPost.replace("blog/", "").replace("-", " ");
+};
