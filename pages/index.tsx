@@ -1,26 +1,32 @@
 import {
-  Container,
   Box,
+  Button,
+  Container,
   Heading,
+  Icon,
   Img,
-  SimpleGrid,
+  Link,
   List,
   ListItem,
-  Link,
-  Button,
-  Icon,
+  VStack,
 } from "@chakra-ui/react";
+import fs from "fs";
+import { GetStaticProps } from "next";
 import React from "react";
-import Section from "../components/layouts/Section";
 import {
-  IoLogoTwitter,
-  IoLogoInstagram,
   IoLogoGithub,
+  IoLogoInstagram,
   IoLogoLinkedin,
+  IoLogoTwitter,
 } from "react-icons/io5";
+import Section from "../components/layouts/Section";
 import SectionHeader from "../components/layouts/SectionHeader";
 
-const Page = () => {
+type Props = {
+  blogPosts: string[];
+};
+
+const Page = ({ blogPosts }: Props) => {
   const jonImage = "jon.jpeg";
   return (
     <Container>
@@ -145,11 +151,21 @@ const Page = () => {
           <Heading as="h4" variant="section-title">
             Blog posts
           </Heading>
-          <Link href="/blog/my-first-post">
-            <Button variant="ghost" colorScheme="teal">
-              My First post
-            </Button>
-          </Link>
+          <VStack mt={5} alignItems="start">
+            {blogPosts &&
+              blogPosts.map((blogPost, index) => (
+                <Link key={index} href={blogPost}>
+                  <Button
+                    h={0}
+                    variant="ghost"
+                    colorScheme="teal"
+                    textTransform="capitalize"
+                  >
+                    {formatBlogPost(blogPost)}
+                  </Button>
+                </Link>
+              ))}
+          </VStack>
         </Box>
       </Section>
     </Container>
@@ -157,3 +173,19 @@ const Page = () => {
 };
 
 export default Page;
+
+export const getStaticProps: GetStaticProps<Props> = () => {
+  const blogPosts = fs
+    .readdirSync("posts")
+    .map((post) => "".concat("blog/", post.replace(".md", "")))
+    .reverse();
+  return {
+    props: {
+      blogPosts,
+    },
+  };
+};
+
+const formatBlogPost = (blogPost: string): string => {
+  return blogPost.replace("blog/", "").replace("-", " ");
+};
