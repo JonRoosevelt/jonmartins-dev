@@ -14,11 +14,9 @@ const Main = ({ children }: Props) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Jon Martins - Homepage</title>
       </Head>
-      <Container maxW="container.md" pt={14}>
-        <Container>
-          <Navbar />
-          {children}
-        </Container>
+      <Container maxW="container.lg" pt={14}>
+        <Navbar />
+        {children}
       </Container>
     </Box>
   );

@@ -30,11 +30,7 @@ const Page = ({ blogPosts }: Props) => {
   const jonImage = "jon.jpeg";
   return (
     <Container>
-      <SectionHeader
-        message="Hello, I'm a fullstack developer based in Brazil!
-      "
-      />
-      <Section delay={0.1}>
+      <Section delay={0.3}>
         <Box display={{ md: "flex" }}>
           <Box>
             <Img
@@ -55,7 +51,7 @@ const Page = ({ blogPosts }: Props) => {
           </Box>
         </Box>
       </Section>
-      <Section delay={0.2}>
+      <Section delay={0.5}>
         <Heading as="h2" mt="50px" variant="section-title">
           Hello
         </Heading>
@@ -90,82 +86,6 @@ const Page = ({ blogPosts }: Props) => {
           </p>
           <br />
           <p>See you! 👀</p>
-        </Box>
-      </Section>
-      <Section delay={0.3}>
-        <Box flexGrow={1} mt="50px">
-          <Heading as="h4" variant="section-title">
-            Links
-          </Heading>
-          <List mt="20px">
-            <ListItem>
-              <Link href="http://github.com/jonroosevelt" target="_blank">
-                <Button
-                  variant="ghost"
-                  colorScheme="teal"
-                  leftIcon={<Icon as={IoLogoGithub} />}
-                >
-                  @jonroosevelt
-                </Button>
-              </Link>
-            </ListItem>
-            <ListItem>
-              <Link href="http://twitter.com/jonroosevelt" target="_blank">
-                <Button
-                  variant="ghost"
-                  colorScheme="teal"
-                  leftIcon={<Icon as={IoLogoTwitter} />}
-                >
-                  @jonroosevelt
-                </Button>
-              </Link>
-            </ListItem>
-            <ListItem>
-              <Link
-                href="http://linkedin.com/in/jonathanmartins88"
-                target="_blank"
-              >
-                <Button
-                  variant="ghost"
-                  colorScheme="teal"
-                  leftIcon={<Icon as={IoLogoLinkedin} />}
-                >
-                  jonathanmartins88
-                </Button>
-              </Link>
-            </ListItem>
-            <ListItem>
-              <Link href="http://instagram.com/jonroosevelt" target="_blank">
-                <Button
-                  variant="ghost"
-                  colorScheme="teal"
-                  leftIcon={<Icon as={IoLogoInstagram} />}
-                >
-                  @jonroosevelt
-                </Button>
-              </Link>
-            </ListItem>
-          </List>
-        </Box>
-        <Box flexGrow={1} mt="50px">
-          <Heading as="h4" variant="section-title">
-            Blog posts
-          </Heading>
-          <VStack mt={5} alignItems="start">
-            {blogPosts &&
-              blogPosts.map((blogPost, index) => (
-                <Link key={index} href={blogPost}>
-                  <Button
-                    h={0}
-                    variant="ghost"
-                    colorScheme="teal"
-                    textTransform="capitalize"
-                  >
-                    {formatBlogPost(blogPost)}
-                  </Button>
-                </Link>
-              ))}
-          </VStack>
         </Box>
       </Section>
     </Container>
