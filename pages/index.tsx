@@ -1,35 +1,13 @@
-import {
-  Box,
-  Button,
-  Container,
-  Heading,
-  Icon,
-  Img,
-  Link,
-  List,
-  ListItem,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Container, Heading, Img } from "@chakra-ui/react";
 import fs from "fs";
 import { GetStaticProps } from "next";
-import React from "react";
-import {
-  IoLogoGithub,
-  IoLogoInstagram,
-  IoLogoLinkedin,
-  IoLogoTwitter,
-} from "react-icons/io5";
+import React, { ReactElement } from "react";
 import Section from "../components/layouts/Section";
-import SectionHeader from "../components/layouts/SectionHeader";
 
-type Props = {
-  blogPosts: string[];
-};
-
-const Page = ({ blogPosts }: Props) => {
+const Page = (): ReactElement => {
   const jonImage = "jon.jpeg";
   return (
-    <Container>
+    <Container py={[1, 0]}>
       <Section delay={0.3}>
         <Box display={{ md: "flex" }}>
           <Box>
@@ -94,18 +72,18 @@ const Page = ({ blogPosts }: Props) => {
 
 export default Page;
 
-export const getStaticProps: GetStaticProps<Props> = () => {
-  const blogPosts = fs
-    .readdirSync("posts")
-    .map((post) => "".concat("blog/", post.replace(".md", "")))
-    .reverse();
-  return {
-    props: {
-      blogPosts,
-    },
-  };
-};
+//export const getStaticProps: GetStaticProps<Props> = () => {
+//const blogPosts = fs
+//.readdirSync("posts")
+//.map((post) => "".concat("blog/", post.replace(".md", "")))
+//.reverse();
+//return {
+//props: {
+//blogPosts,
+//},
+//};
+//};
 
-const formatBlogPost = (blogPost: string): string => {
-  return blogPost.replace("blog/", "").replace("-", " ");
-};
+//const formatBlogPost = (blogPost: string): string => {
+//return blogPost.replace("blog/", "").replace("-", " ");
+//};
