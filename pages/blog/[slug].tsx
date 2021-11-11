@@ -7,25 +7,18 @@ import React from "react";
 import marked from "marked";
 import matter from "gray-matter";
 import styled from "@emotion/styled";
-import SectionHeader from "../../components/layouts/SectionHeader";
-import Section from "../../components/layouts/Section";
-
-type PostProps = {
-  htmlString: string;
-  post: {
-    title: string;
-    description: string;
-    coverImage: string;
-    date: string;
-    author: string;
-    content: string;
-  };
-};
+import Section from "../../src/components/layouts/Section";
+import { PostType } from "../../src/types/blogs";
+import { Button, Icon, Link } from "@chakra-ui/react";
+import { IoArrowBack, IoLogoGithub } from "react-icons/io5";
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
 }
 
+type HtmlString = {
+  htmlString: string;
+};
 const PostStyle = styled.div`
   h2 {
     font-weight: var(--chakra-fontWeights-bold);
@@ -40,14 +33,26 @@ const PostStyle = styled.div`
   }
 `;
 
-const Post = ({ htmlString, post }: PostProps): React.ReactNode => {
+const Post = ({
+  htmlString,
+  title,
+  description,
+}: PostType["data"] & HtmlString): React.ReactNode => {
   return (
     <>
-      <SectionHeader message="Have a nice read" />
+      <Link href="/blog">
+        <Button
+          variant="ghost"
+          colorScheme="teal"
+          leftIcon={<Icon as={IoArrowBack} />}
+        >
+          Back to blogs
+        </Button>
+      </Link>
       <Section delay={0.1}>
         <Head>
-          <title>{post.title}</title>
-          <meta title="description" content={post.description} />
+          <title>{title}</title>
+          <meta title="description" content={description} />
         </Head>
         <PostStyle>
           <div dangerouslySetInnerHTML={{ __html: htmlString }} />
