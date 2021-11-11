@@ -1,13 +1,11 @@
 import { Box, Container, Heading, Img } from "@chakra-ui/react";
-import fs from "fs";
-import { GetStaticProps } from "next";
 import React, { ReactElement } from "react";
-import Section from "../components/layouts/Section";
+import Section from "../src/components/layouts/Section";
 
 const Page = (): ReactElement => {
   const jonImage = "jon.jpeg";
   return (
-    <Container py={[1, 0]}>
+    <>
       <Section delay={0.3}>
         <Box display={{ md: "flex" }}>
           <Box>
@@ -66,24 +64,8 @@ const Page = (): ReactElement => {
           <p>See you! 👀</p>
         </Box>
       </Section>
-    </Container>
+    </>
   );
 };
 
 export default Page;
-
-//export const getStaticProps: GetStaticProps<Props> = () => {
-//const blogPosts = fs
-//.readdirSync("posts")
-//.map((post) => "".concat("blog/", post.replace(".md", "")))
-//.reverse();
-//return {
-//props: {
-//blogPosts,
-//},
-//};
-//};
-
-//const formatBlogPost = (blogPost: string): string => {
-//return blogPost.replace("blog/", "").replace("-", " ");
-//};

@@ -1,6 +1,11 @@
 ---
 title: 'Triggers'
 description: 'A further look into habit triggers'
+coverImage: 'https://i.imgur.com/JnVhuLX.jpg'
+imageDescription: 'an image of a gun focusing on its trigger'
+previewText: For any behavioral science researcher, reader or even enthusiast (like me), there's a pretty commonly used word Trigger It's borrowed from the military and arms world and it's used to talk about input and output in a behavioral context.
+author: Jon Martins
+date: Nov 10, 2021
 ---
 
 ![](https://i.imgur.com/JnVhuLX.jpg)

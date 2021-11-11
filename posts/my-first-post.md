@@ -1,7 +1,13 @@
 ---
 title: 'Welcome'
 description: 'A warm welcome to my personal page and blog'
+coverImage: 'https://i.imgur.com/s0GWrhR.jpg'
+imageDescription: 'a side picture of me, at a conference, smiling.'
+previewText: Hello folks. It's a pleasure for me to welcome all of you to my personal page. It's been a while since I've been planning to create my personal page. I mean, I am a developer, but as they say The shoemaker's son always goes barefoot
+author: Jon Martins
+date: Nov 02, 2021
 ---
+![](https://i.imgur.com/s0GWrhR.jpg)
 
 ## Welcome
 

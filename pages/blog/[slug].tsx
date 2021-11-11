@@ -7,25 +7,17 @@ import React from "react";
 import marked from "marked";
 import matter from "gray-matter";
 import styled from "@emotion/styled";
-import SectionHeader from "../../components/layouts/SectionHeader";
-import Section from "../../components/layouts/Section";
-
-type PostProps = {
-  htmlString: string;
-  post: {
-    title: string;
-    description: string;
-    coverImage: string;
-    date: string;
-    author: string;
-    content: string;
-  };
-};
+import SectionHeader from "../../src/components/layouts/SectionHeader";
+import Section from "../../src/components/layouts/Section";
+import { PostType } from "../../src/types/blogs";
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
 }
 
+type HtmlString = {
+  htmlString: string;
+};
 const PostStyle = styled.div`
   h2 {
     font-weight: var(--chakra-fontWeights-bold);
@@ -40,14 +32,19 @@ const PostStyle = styled.div`
   }
 `;
 
-const Post = ({ htmlString, post }: PostProps): React.ReactNode => {
+const Post = ({
+  htmlString,
+  title,
+  description,
+}: PostType["data"] & HtmlString): React.ReactNode => {
+  console.log(title);
   return (
     <>
       <SectionHeader message="Have a nice read" />
       <Section delay={0.1}>
         <Head>
-          <title>{post.title}</title>
-          <meta title="description" content={post.description} />
+          <title>{title}</title>
+          <meta title="description" content={description} />
         </Head>
         <PostStyle>
           <div dangerouslySetInnerHTML={{ __html: htmlString }} />

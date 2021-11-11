@@ -16,7 +16,7 @@ const Main = ({ children }: Props) => {
       </Head>
       <Container maxW="container.lg" pt={14}>
         <Navbar />
-        {children}
+        <Container maxW="container.md">{children}</Container>
       </Container>
     </Box>
   );

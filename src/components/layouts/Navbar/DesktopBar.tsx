@@ -33,7 +33,7 @@ const DesktopBar: NextPage = () => {
       >
         <HStack spacing="40px">
           <Link href="/">HOME</Link>
-          <Link href="/blogs">BLOGS</Link>
+          <Link href="/blog">BLOGS</Link>
           <Link href="/art">ART</Link>
         </HStack>
         <HStack spacing="10px">

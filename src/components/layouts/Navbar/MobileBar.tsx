@@ -36,7 +36,7 @@ const MenuListItems: MenuItemType[] = [
   {
     blank: false,
     text: "BLOGS",
-    href: "/blogs",
+    href: "/blog",
     icon: null,
   },
   {
