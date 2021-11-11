@@ -7,9 +7,10 @@ import React from "react";
 import marked from "marked";
 import matter from "gray-matter";
 import styled from "@emotion/styled";
-import SectionHeader from "../../src/components/layouts/SectionHeader";
 import Section from "../../src/components/layouts/Section";
 import { PostType } from "../../src/types/blogs";
+import { Button, Icon, Link } from "@chakra-ui/react";
+import { IoArrowBack, IoLogoGithub } from "react-icons/io5";
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
@@ -37,10 +38,17 @@ const Post = ({
   title,
   description,
 }: PostType["data"] & HtmlString): React.ReactNode => {
-  console.log(title);
   return (
     <>
-      <SectionHeader message="Have a nice read" />
+      <Link href="/blog">
+        <Button
+          variant="ghost"
+          colorScheme="teal"
+          leftIcon={<Icon as={IoArrowBack} />}
+        >
+          Back to blogs
+        </Button>
+      </Link>
       <Section delay={0.1}>
         <Head>
           <title>{title}</title>
