@@ -1,12 +1,12 @@
-import { Grid, GridItem, SimpleGrid } from "@chakra-ui/react";
 import fs from "fs";
 import matter, { GrayMatterFile } from "gray-matter";
 import marked from "marked";
 import { GetStaticProps } from "next";
 import path from "path";
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import { PostProps, PostType } from "../../src/types/blogs";
-import Index from "../../src/components/BlogCard";
+import BlogCard from "../../src/components/BlogCard";
+import { Center, Wrap, WrapItem } from "@chakra-ui/react";
 
 const Blog = ({ posts, blogPosts }: PostProps & PostType): ReactElement => {
   const parsedPosts = JSON.parse(posts);
@@ -14,15 +14,17 @@ const Blog = ({ posts, blogPosts }: PostProps & PostType): ReactElement => {
     const path = `blog/${blogPosts[index]}`;
     const postWithPath = { ...post, path };
     return (
-      <GridItem key={post.content}>
-        <Index {...postWithPath} />
-      </GridItem>
+      <WrapItem flexWrap={"wrap"} key={post.content}>
+        <Center w={["300px", "350px"]}>
+          <BlogCard {...postWithPath} />
+        </Center>
+      </WrapItem>
     );
   });
   return (
-    <SimpleGrid gap={6} columns={[2, null, 2]}>
+    <Wrap py={6} spacing={5} columns={[2, 2]}>
       {blogs}
-    </SimpleGrid>
+    </Wrap>
   );
 };
 
