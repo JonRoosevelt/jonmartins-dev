@@ -58,7 +58,7 @@ const Index = (post: PostType & Path): ReactElement => {
             maxH={["4rem", "8rem"]}
             display="block"
             textOverflow="ellipsis"
-            webKitOrient="vertical"
+            webkitorient="vertical"
             color={"gray.500"}
           >
             {post.data.previewText}
