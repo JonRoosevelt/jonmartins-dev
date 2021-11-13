@@ -10,7 +10,7 @@ import styled from "@emotion/styled";
 import Section from "../../src/components/layouts/Section";
 import { PostType } from "../../src/types/blogs";
 import { Button, Icon, Link } from "@chakra-ui/react";
-import { IoArrowBack, IoLogoGithub } from "react-icons/io5";
+import { IoArrowBack } from "react-icons/io5";
 
 interface IParams extends ParsedUrlQuery {
   slug: string;
