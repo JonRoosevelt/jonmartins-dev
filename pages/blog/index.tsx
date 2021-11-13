@@ -7,6 +7,7 @@ import React, { ReactElement } from "react";
 import { PostProps, PostType } from "../../src/types/blogs";
 import BlogCard from "../../src/components/BlogCard";
 import { Center, Wrap, WrapItem } from "@chakra-ui/react";
+import Section from "../../src/components/layouts/Section";
 
 const Blog = ({ posts, blogPosts }: PostProps & PostType): ReactElement => {
   const parsedPosts = JSON.parse(posts);
@@ -22,9 +23,11 @@ const Blog = ({ posts, blogPosts }: PostProps & PostType): ReactElement => {
     );
   });
   return (
-    <Wrap py={6} spacing={5} columns={[2, 2]}>
-      {blogs}
-    </Wrap>
+    <Section delay={0.3}>
+      <Wrap py={6} spacing={5} columns={[2, 2]}>
+        {blogs}
+      </Wrap>
+    </Section>
   );
 };
 
