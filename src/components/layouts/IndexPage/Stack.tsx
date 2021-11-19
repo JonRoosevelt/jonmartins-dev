@@ -1,15 +1,16 @@
-import {
-  Box,
-  Heading,
-  Table,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
-} from "@chakra-ui/react";
+import { Box, Heading, HStack, StackDivider, VStack } from "@chakra-ui/react";
 import React, { ReactElement } from "react";
 import Section from "../Section";
+
+const stackTableData = [
+  { head: "Front End", body: ["React", "NextJS", "HTML", "CSS"] },
+  { head: "Back End", body: ["Node", ".NET", "Django", "Flask"] },
+  { head: "Languages", body: ["Javascript", "Typescript", "Python", "C#"] },
+  {
+    head: "Design",
+    body: ["Illustrator", "Photoshop", "Figma", "Free-hand illustration"],
+  },
+];
 
 const Stack = (): ReactElement => {
   return (
@@ -27,34 +28,25 @@ const Stack = (): ReactElement => {
         <br />
       </Box>
       <Box flexGrow={1} mt="32px">
-        <Table variant="simple">
-          <Thead>
-            <Th>Front End</Th>
-            <Th>Back End</Th>
-            <Th>Languages</Th>
-            <Th>Design</Th>
-          </Thead>
-          <Tbody>
-            <Tr>
-              <Td>React </Td>
-              <Td>NextJS</Td>
-              <Td>Html </Td>
-              <Td>CSS </Td>
-            </Tr>
-            <Tr>
-              <Td>Node</Td>
-              <Td>.NET</Td>
-              <Td>Django</Td>
-              <Td>Flask</Td>
-            </Tr>
-            <Tr>
-              <Td>Illustrator</Td>
-              <Td>Photoshop</Td>
-              <Td>Figma</Td>
-              <Td>Free hand illustration</Td>
-            </Tr>
-          </Tbody>
-        </Table>
+        <HStack alignItems="flex-start" spacing={{ base: 50, md: 75, lg: 100 }}>
+          {stackTableData.map((column) => (
+            <VStack
+              divider={<StackDivider borderColor="red" />}
+              spacing={4}
+              align="stretch"
+              key={column.head}
+            >
+              <Box>
+                <Heading color="teal.100" fontSize={18} as="h5" mb="10px">
+                  {column.head}
+                </Heading>
+                {column.body.map((row) => (
+                  <p key={row}>{row}</p>
+                ))}
+              </Box>
+            </VStack>
+          ))}
+        </HStack>
       </Box>
     </Section>
   );
