@@ -7,7 +7,7 @@ const jonImage = "jon.jpeg";
 const ProfileCard = (): ReactElement => {
   return (
     <Section delay={0.3}>
-      <Box display={{ md: "flex" }}>
+      <Box mt="40px" display={{ md: "flex" }}>
         <Box>
           <Img
             src={jonImage}

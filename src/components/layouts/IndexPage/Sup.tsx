@@ -5,7 +5,7 @@ import Section from "../Section";
 const Sup = (): ReactElement => {
   return (
     <Section delay={0.5}>
-      <Heading as="h2" mt="50px" variant="section-title">
+      <Heading as="h2" mt="24px" variant="section-title">
         {`'Sup?!`}
       </Heading>
       <Box flexGrow={1} mt="20px">

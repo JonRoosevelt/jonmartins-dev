@@ -5,7 +5,7 @@ import Section from "../Section";
 const History = (): ReactElement => {
   return (
     <Section delay={0.6}>
-      <Heading as="h3" mt="40px">
+      <Heading fontSize={24} as="h3" mt="40px">
         History
       </Heading>
       <Box flexGrow={1} mt="20px">
