@@ -1,32 +1,12 @@
-import { Box, Container, Heading, Img } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import React, { ReactElement } from "react";
+import ProfileCard from "../src/components/layouts/IndexPage/ProfileCard";
 import Section from "../src/components/layouts/Section";
 
 const Page = (): ReactElement => {
-  const jonImage = "jon.jpeg";
   return (
     <>
-      <Section delay={0.3}>
-        <Box display={{ md: "flex" }}>
-          <Box>
-            <Img
-              src={jonImage}
-              alt="Jon Martins"
-              boxSize="100px"
-              objectFit="cover"
-              borderRadius="full"
-              mr="50px"
-              mb="25px"
-            />
-          </Box>
-          <Box flexGrow={1} mt="10px">
-            <Heading as="h2" variant="page-title">
-              Jon Martins
-            </Heading>
-            <p>Artist / Developer / Designer</p>
-          </Box>
-        </Box>
-      </Section>
+      <ProfileCard />
       <Section delay={0.5}>
         <Heading as="h2" mt="50px" variant="section-title">
           Hello
