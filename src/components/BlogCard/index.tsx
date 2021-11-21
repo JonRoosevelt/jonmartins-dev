@@ -1,7 +1,7 @@
 import { Avatar, useColorModeValue } from "@chakra-ui/react";
 import Image from "next/image";
 
-import { Center, Box, Stack, Text, Heading } from "@chakra-ui/layout";
+import { Box, Stack, Text, Heading } from "@chakra-ui/layout";
 import React, { ReactElement } from "react";
 import { PostType } from "../../types/blogs";
 import Link from "next/link";
