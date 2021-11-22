@@ -19,9 +19,7 @@ const Main = ({ children }: Props) => {
         <Navbar />
         <Container maxW="container.md">{children}</Container>
       </Container>
-      <Container maxW={["container.sm", "container.md"]}>
-        <Footer />
-      </Container>
+      <Footer />
     </Box>
   );
 };
