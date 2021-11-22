@@ -16,7 +16,7 @@ const stackTableData = [
 const Stack = (): ReactElement => {
   return (
     <Section delay={0.7}>
-      <Heading fontSize={24} as="h3" mt="40px">
+      <Heading id="stack" fontSize={24} as="h3" mt="40px">
         Stack
       </Heading>
       <Box flexGrow={1} mt="20px">
