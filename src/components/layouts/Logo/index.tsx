@@ -82,11 +82,11 @@ const StackSpan = styled.div`
         backwards calc(var(--index) * 120ms),
       ${keyFrameGlitch} 1s ease infinite 1s alternate-reverse;
   }
-  span:nth-child(odd) {
-    --glitch-translate: 8px;
+  span:nth-of-type(odd) {
+    --glitch-translate: 18px;
   }
-  span:nth-child(even) {
-    --glitch-translate: -8px;
+  span:nth-of-type(even) {
+    --glitch-translate: -16px;
   }
 `;
 
