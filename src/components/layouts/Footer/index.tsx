@@ -4,9 +4,19 @@ import ResponsiveTable from "../ResponsiveTable";
 import Section from "../Section";
 
 const tableData = [
-  { head: "Home", body: ["Sup?", "History", "Stack"] },
-  { head: "Blogs", body: ["Dev", "Design", "Random"] },
-  { head: "Art", body: ["Drawings", "Design"] },
+  {
+    head: "Home",
+    body: [
+      { name: "Sup?", link: "/#sup" },
+      { name: "History", link: "/#history" },
+      { name: "Stack", link: "/#stack" },
+    ],
+  },
+  {
+    head: "Blogs",
+    body: [{ name: "Dev" }, { name: "Design" }, { name: "Random" }],
+  },
+  { head: "Art", body: [{ name: "Drawings" }, { name: "Design" }] },
 ];
 
 const Footer = (): ReactElement => {

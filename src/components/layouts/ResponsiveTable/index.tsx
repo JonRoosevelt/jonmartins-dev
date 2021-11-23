@@ -1,4 +1,4 @@
-import { Wrap, WrapItem, VStack, Box, Heading } from "@chakra-ui/react";
+import { Wrap, WrapItem, VStack, Box, Heading, Link } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import React, { ReactElement } from "react";
 
@@ -8,9 +8,14 @@ const WrapItems = styled.div`
   }
 `;
 
+type ItemRow = {
+  name: string;
+  link?: string;
+};
+
 type TableDataItem = {
   head: string;
-  body: Array<string>;
+  body: Array<ItemRow>;
 };
 
 type Props = {
@@ -29,7 +34,13 @@ const ResponsiveTable = ({ tableData }: Props): ReactElement => {
                   {column.head}
                 </Heading>
                 {column.body.map((row) => (
-                  <p key={row}>{row}</p>
+                  <p key={row.name}>
+                    {row.link ? (
+                      <Link href={row.link}>{row.name}</Link>
+                    ) : (
+                      row.name
+                    )}
+                  </p>
                 ))}
               </Box>
             </VStack>

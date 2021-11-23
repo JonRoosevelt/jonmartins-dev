@@ -4,12 +4,41 @@ import ResponsiveTable from "../ResponsiveTable";
 import Section from "../Section";
 
 const stackTableData = [
-  { head: "Front End", body: ["React", "NextJS", "HTML", "CSS"] },
-  { head: "Back End", body: ["Node", ".NET", "Django", "Flask"] },
-  { head: "Languages", body: ["Javascript", "Typescript", "Python", "C#"] },
+  {
+    head: "Front End",
+    body: [
+      { name: "React" },
+      { name: "NextJS" },
+      { name: "HTML" },
+      { name: "CSS" },
+    ],
+  },
+  {
+    head: "Back End",
+    body: [
+      { name: "Node" },
+      { name: ".NET" },
+      { name: "Django" },
+      { name: "Flask" },
+    ],
+  },
+  {
+    head: "Languages",
+    body: [
+      { name: "Javascript" },
+      { name: "Typescript" },
+      { name: "Python" },
+      { name: "C#" },
+    ],
+  },
   {
     head: "Design",
-    body: ["Illustrator", "Photoshop", "Figma", "Free-hand illustration"],
+    body: [
+      { name: "Illustrator" },
+      { name: "Photoshop" },
+      { name: "Figma" },
+      { name: "Free-hand illustration" },
+    ],
   },
 ];
 
