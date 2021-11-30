@@ -1,22 +1,13 @@
 import { Wrap, WrapItem, VStack, Box, Heading, Link } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import React, { ReactElement } from "react";
+import { TableDataItem } from "./types.d";
 
 const WrapItems = styled.div`
   ul {
     justify-content: space-between;
   }
 `;
-
-type ItemRow = {
-  name: string;
-  link?: string;
-};
-
-type TableDataItem = {
-  head: string;
-  body: Array<ItemRow>;
-};
 
 type Props = {
   tableData: Array<TableDataItem>;
