@@ -7,7 +7,7 @@ const Art: NextPage = () => {
   return (
     <Section delay={0.3}>
       <Center py={6}>
-        <Box>
+        <Box minHeight="sm">
           <Icon transform={"rotate(20deg)"} as={GiSandsOfTime} /> Comming
           soon...
         </Box>
