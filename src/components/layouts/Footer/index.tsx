@@ -2,22 +2,7 @@ import { Box, Container } from "@chakra-ui/react";
 import { ReactElement } from "react";
 import ResponsiveTable from "../ResponsiveTable";
 import Section from "../Section";
-
-const tableData = [
-  {
-    head: "Home",
-    body: [
-      { name: "Sup?", link: "/#sup" },
-      { name: "History", link: "/#history" },
-      { name: "Stack", link: "/#stack" },
-    ],
-  },
-  {
-    head: "Blogs",
-    body: [{ name: "Dev" }, { name: "Design" }, { name: "Random" }],
-  },
-  { head: "Art", body: [{ name: "Drawings" }, { name: "Design" }] },
-];
+import { blogPostsTableData } from "./blog-posts-table-data";
 
 const Footer = (): ReactElement => {
   return (
@@ -33,7 +18,7 @@ const Footer = (): ReactElement => {
       >
         <Container maxW={["container.xs", "container.sm", "container.md"]}>
           <Box paddingX={[4, 0]}>
-            <ResponsiveTable tableData={tableData} />
+            <ResponsiveTable tableData={blogPostsTableData} />
           </Box>
         </Container>
       </Box>

@@ -16,22 +16,24 @@ type Props = {
 const ResponsiveTable = ({ tableData }: Props): ReactElement => {
   return (
     <WrapItems>
-      <Wrap spacing={2} w={["container.xs", "container.sm", "46em"]}>
+      <Wrap w={["container.xs", "container.sm", "46em"]}>
         {tableData.map((column) => (
           <WrapItem textAlign="left" flexWrap={"wrap"} key={column.head}>
-            <VStack spacing={4} align="stretch" key={column.head}>
-              <Box w="container.xs">
+            <VStack key={column.head}>
+              <Box>
                 <Heading color="teal.100" fontSize={18} as="h5" mb="10px">
                   {column.head}
                 </Heading>
                 {column.body.map((row) => (
-                  <p key={row.name}>
+                  <Box key={row.name}>
                     {row.link ? (
-                      <Link href={row.link}>{row.name}</Link>
+                      <p style={{ marginBottom: 12, width: 100 }}>
+                        <Link href={row.link}>{row.name}</Link>
+                      </p>
                     ) : (
                       row.name
                     )}
-                  </p>
+                  </Box>
                 ))}
               </Box>
             </VStack>
