@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { ParsedUrlQuery } from "querystring";
 import Head from "next/head";
 import React from "react";
-import marked from "marked";
+import { marked } from "marked";
 import matter from "gray-matter";
 import styled from "@emotion/styled";
 import Section from "../../src/components/layouts/Section";
