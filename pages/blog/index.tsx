@@ -1,6 +1,6 @@
 import fs from "fs";
 import matter, { GrayMatterFile } from "gray-matter";
-import marked from "marked";
+import { marked } from "marked";
 import { GetStaticProps } from "next";
 import path from "path";
 import React, { ReactElement } from "react";
@@ -16,7 +16,7 @@ const Blog = ({ posts, blogPosts }: PostProps & PostType): ReactElement => {
     const postWithPath = { ...post, path };
     return (
       <WrapItem flexWrap={"wrap"} key={post.content}>
-        <Center w={["300px", "350px"]}>
+        <Center w={[200, 300, 350]}>
           <BlogCard {...postWithPath} />
         </Center>
       </WrapItem>
