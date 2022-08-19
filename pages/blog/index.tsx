@@ -16,7 +16,7 @@ const Blog = ({ posts, blogPosts }: PostProps & PostType): ReactElement => {
     const postWithPath = { ...post, path };
     return (
       <WrapItem flexWrap={"wrap"} key={post.content}>
-        <Center w={[200, 300, 350]}>
+        <Center w={["300px", "350px"]}>
           <BlogCard {...postWithPath} />
         </Center>
       </WrapItem>

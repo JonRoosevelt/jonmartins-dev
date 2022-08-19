@@ -39,8 +39,8 @@ const Index = (post: PostType & Path): ReactElement => {
               alt={post.data.imageDescription}
               src={post.data.coverImage}
               objectFit="cover"
-              width={350}
-              height={250}
+              width={"350em"}
+              height={"225vh"}
             />
           </Box>
           <Stack>
