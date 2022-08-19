@@ -19,7 +19,7 @@ type Path = {
 const Index = (post: PostType & Path): ReactElement => {
   return (
     <LinkBox as="article" key={post.path}>
-      <LinkOverlay href={post.path} passHref>
+      <LinkOverlay href={post.path}>
         <Box
           bg={useColorModeValue("white", "gray.900")}
           boxShadow={"2xl"}
