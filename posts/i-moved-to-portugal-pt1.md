@@ -33,7 +33,7 @@ A few minutes after we entered our room, I caught myself looking from our room's
 
 I don´t know if you have already gone through such a huge change in your life, but, giving up so many things and being so far from home and from our loved ones, might be a little overwhelming at first.
 
-When we were going through the process of getting our documents, selling our stuff, quiting our jobs, back in Brazil, it seems that the idea that we would be an ocean apart from everything we knew to that point, wasn't really yet setled. But when you really arrive at your destination and your mind beggins to realize it, it takes some effort to get used to it. Thankfully, my wife has always been the strongest when it comes to mental steadiness. She has been of such a huge help and I'm thankful for it.
+When we were going through the process of getting our documents, selling our stuff, quiting our jobs, back in Brazil, it seems that the idea that we would be an ocean apart from everything we knew to that point, wasn't really yet settled. But when you really arrive at your destination and your mind beggins to realize it, it takes some effort to get used to it. Thankfully, my wife has always been the strongest when it comes to mental steadiness. She has been of such a huge help and I'm thankful for it.
 
 Looking for a place
 -------
