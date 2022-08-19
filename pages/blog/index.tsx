@@ -34,6 +34,13 @@ const Blog = ({ posts, blogPosts }: PostProps & PostType): ReactElement => {
 export default Blog;
 
 export const getStaticProps: GetStaticProps = () => {
+  const sortByDate = (blogs: GrayMatterFile<string>[]) => {
+    return [...blogs]
+      .sort((a, b) => {
+        return Date.parse(a.data.date) - Date.parse(b.data.date);
+      })
+      .reverse();
+  };
   let posts: GrayMatterFile<string>[] = [];
   let htmlStringList: string[] = [];
   const blogPosts = fs
@@ -54,7 +61,7 @@ export const getStaticProps: GetStaticProps = () => {
   return {
     props: {
       htmlStringList,
-      posts: JSON.stringify(posts),
+      posts: JSON.stringify(sortByDate(posts)),
       blogPosts,
     },
   };
