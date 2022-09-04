@@ -9,6 +9,11 @@ import BlogCard from "../../src/components/BlogCard";
 import { Center, Wrap, WrapItem } from "@chakra-ui/react";
 import Section from "../../src/components/layouts/Section";
 
+interface Post {
+  name: string;
+  time: number;
+}
+
 const Blog = ({ posts, blogPosts }: PostProps & PostType): ReactElement => {
   const parsedPosts = JSON.parse(posts);
   const blogs = parsedPosts.map((post: PostType, index: number) => {
@@ -38,18 +43,22 @@ export const getStaticProps: GetStaticProps = () => {
   let htmlStringList: string[] = [];
   const blogPosts = fs
     .readdirSync("posts")
-    .map((post: string) => "".concat(post.replace(".md", "")))
-    .reverse();
-  blogPosts.forEach((blogPost: string) => {
-    const markdownWithMetaData = fs
-      .readFileSync(path.join("posts", blogPost + ".md"))
-      .toString();
+    .map((fileName: string) => ({
+      name: fileName.replace(".md", ""),
+      time: fs.statSync(`posts/${fileName}`).mtime.getTime(),
+    }))
+    .sort((a, b) => b.time - a.time)
+    .map((post: Post) => {
+      const markdownWithMetaData = fs
+        .readFileSync(path.join("posts", post.name + ".md"))
+        .toString();
 
-    const parsedMarkDown = matter(markdownWithMetaData);
-    const htmlString = marked(parsedMarkDown.content);
-    posts.push(parsedMarkDown);
-    htmlStringList.push(htmlString);
-  });
+      const parsedMarkDown = matter(markdownWithMetaData);
+      const htmlString = marked(parsedMarkDown.content);
+      posts.push(parsedMarkDown);
+      htmlStringList.push(htmlString);
+      return post.name;
+    });
 
   return {
     props: {
