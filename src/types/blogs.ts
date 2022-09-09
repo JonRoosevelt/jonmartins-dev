@@ -11,9 +11,16 @@ export type PostType = {
   };
 };
 
+export type BlogPost = {
+  date: number;
+  htmlString: string;
+  name: string;
+  parsedMarkDown: string;
+};
+
 export type PostProps = {
   htmlStringList: string[];
   posts: string;
-  blogPosts: string[];
+  blogPosts: BlogPost[];
   parsedMarkDown: string;
 };

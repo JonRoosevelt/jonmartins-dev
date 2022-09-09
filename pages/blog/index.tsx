@@ -1,5 +1,5 @@
 import fs from "fs";
-import matter, { GrayMatterFile } from "gray-matter";
+import matter from "gray-matter";
 import { marked } from "marked";
 import { GetStaticProps } from "next";
 import path from "path";
@@ -9,15 +9,10 @@ import BlogCard from "../../src/components/BlogCard";
 import { Center, Wrap, WrapItem } from "@chakra-ui/react";
 import Section from "../../src/components/layouts/Section";
 
-interface Post {
-  name: string;
-  time: number;
-}
-
 const Blog = ({ posts, blogPosts }: PostProps & PostType): ReactElement => {
   const parsedPosts = JSON.parse(posts);
   const blogs = parsedPosts.map((post: PostType, index: number) => {
-    const path = `blog/${blogPosts[index]}`;
+    const path = `blog/${blogPosts[index].name}`;
     const postWithPath = { ...post, path };
     return (
       <WrapItem flexWrap={"wrap"} key={post.content}>
@@ -39,32 +34,31 @@ const Blog = ({ posts, blogPosts }: PostProps & PostType): ReactElement => {
 export default Blog;
 
 export const getStaticProps: GetStaticProps = () => {
-  let posts: GrayMatterFile<string>[] = [];
-  let htmlStringList: string[] = [];
   const blogPosts = fs
     .readdirSync("posts")
-    .map((fileName: string) => ({
-      name: fileName.replace(".md", ""),
-      time: fs.statSync(`posts/${fileName}`).mtime.getTime(),
-    }))
-    .sort((a, b) => b.time - a.time)
-    .map((post: Post) => {
+    .map((fileName: string) => {
       const markdownWithMetaData = fs
-        .readFileSync(path.join("posts", post.name + ".md"))
+        .readFileSync(path.join("posts", fileName))
         .toString();
 
       const parsedMarkDown = matter(markdownWithMetaData);
       const htmlString = marked(parsedMarkDown.content);
-      posts.push(parsedMarkDown);
-      htmlStringList.push(htmlString);
-      return post.name;
-    });
-
+      const postDate = new Date(parsedMarkDown.data.date).getTime();
+      return {
+        name: fileName.replace(".md", ""),
+        parsedMarkDown,
+        htmlString,
+        date: postDate,
+      };
+    })
+    .sort((a, b) => b.date - a.date);
   return {
     props: {
-      htmlStringList,
-      posts: JSON.stringify(posts),
-      blogPosts,
+      posts: JSON.stringify(blogPosts.map((post) => post.parsedMarkDown)),
+      blogPosts: blogPosts.map((post) => {
+        const { parsedMarkDown, ...rest } = post;
+        return rest;
+      }),
     },
   };
 };
