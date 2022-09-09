@@ -9,8 +9,10 @@ import BlogCard from "../../src/components/BlogCard";
 import { Center, Wrap, WrapItem } from "@chakra-ui/react";
 import Section from "../../src/components/layouts/Section";
 
-const Blog = ({ posts, blogPosts }: PostProps & PostType): ReactElement => {
-  const parsedPosts = JSON.parse(posts);
+const Blog = ({ blogPosts }: PostProps): ReactElement => {
+  const parsedPosts: PostType[] = blogPosts.map((post) =>
+    JSON.parse(post.parsedMarkDown)
+  );
   const blogs = parsedPosts.map((post: PostType, index: number) => {
     const path = `blog/${blogPosts[index].name}`;
     const postWithPath = { ...post, path };
@@ -46,7 +48,7 @@ export const getStaticProps: GetStaticProps = () => {
       const postDate = new Date(parsedMarkDown.data.date).getTime();
       return {
         name: fileName.replace(".md", ""),
-        parsedMarkDown,
+        parsedMarkDown: JSON.stringify(parsedMarkDown),
         htmlString,
         date: postDate,
       };
@@ -54,11 +56,7 @@ export const getStaticProps: GetStaticProps = () => {
     .sort((a, b) => b.date - a.date);
   return {
     props: {
-      posts: JSON.stringify(blogPosts.map((post) => post.parsedMarkDown)),
-      blogPosts: blogPosts.map((post) => {
-        const { parsedMarkDown, ...rest } = post;
-        return rest;
-      }),
+      blogPosts,
     },
   };
 };
