@@ -1,8 +1,8 @@
 ---
 title: I moved to Portugal Part 2
 description: A follow-up on the latest big change in my life
-coverImage: 'https://i.imgur.com/x7CkFTZ.png'
-imageDescription: An image of me relaxing at work
+coverImage: 'https://i.imgur.com/9D7E1GW.jpg'
+imageDescription: Picture of me posing in front of a race car at Munique's Franz Josef Strauss international airport
 previewText: As I said in the last post, we had a few bumps regarding the first weeks, documentation and so on a so forth. It wasn't all bad things to be honest
 author: 'Jon Martins'
 date: 'Sep 13, 2022'
