@@ -3,9 +3,9 @@ title: I moved to Portugal Part 2
 description: A follow-up on the latest big change in my life
 coverImage: 'https://i.imgur.com/x7CkFTZ.png'
 imageDescription: An image of me relaxing at work
-previewText: It has been more than 5 months since we got to Portugal. Yeah! We moved to Portugal. Here it follows a small summary of our Journey so far
+previewText: As I said in the last post, we had a few bumps regarding the first weeks, documentation and so on a so forth. It wasn't all bad things to be honest
 author: 'Jon Martins'
-date: 'September 13th, 2022'
+date: 'Sep 13, 2022'
 ---
 ![Working hard from the couch at the office](https://i.imgur.com/H6j4bK7.png)
 Working hard from the couch at the office

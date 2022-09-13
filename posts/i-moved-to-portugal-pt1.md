@@ -5,7 +5,7 @@ coverImage: 'https://i.imgur.com/mh9NblF.png'
 imageDescription: An image of my wife and me, wearing winter clothes from our Airbnb balcony with Campo Pequeno's Praça do Touro in the background, at the day we first got to Portugal
 previewText: It has been more than 5 months since we got to Portugal. Yeah! We moved to Portugal. Here it follows a small summary of our Journey so far
 author: 'Jon Martins'
-date: 'August 18th, 2022'
+date: 'Aug 18, 2022'
 ---
 ![](https://i.imgur.com/mh9NblF.png)
 

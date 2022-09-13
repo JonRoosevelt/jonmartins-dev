@@ -54,6 +54,7 @@ export const getStaticProps: GetStaticProps = () => {
       };
     })
     .sort((a, b) => b.date - a.date);
+  console.log(blogPosts);
   return {
     props: {
       blogPosts,
