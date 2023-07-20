@@ -47,7 +47,7 @@ export const getStaticProps: GetStaticProps = () => {
       const htmlString = marked(parsedMarkDown.content);
       const postDate = new Date(parsedMarkDown.data.date).getTime();
       return {
-        name: fileName.replace(".md", ""),
+        name: fileName.replace(".mdx", ""),
         parsedMarkDown: JSON.stringify(parsedMarkDown),
         htmlString,
         date: postDate,
