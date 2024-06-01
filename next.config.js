@@ -1,18 +1,27 @@
-import remarkFrontmatter from "remark-frontmatter";
-import rehypeHighlight from "rehype-highlight";
-import withMDX from "@next/mdx";
+// next.coonfig.js
+const withMDX = require("@next/mdx")({
+  extension: /\.mdx?$/,
+  options: {
+    // If you use remark-gfm, you'll need to use next.config.mjs
+    // as the package is ESM only
+    // https://github.com/remarkjs/remark-gfm#install
+    remarkPlugins: [],
+    rehypePlugins: [],
+    // If you use `MDXProvider`, uncomment the following line.
+    // providerImportSource: "@mdx-js/react",
+  },
+});
 
+/** @type {import('next').NextConfig}*/
 const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   images: {
     domains: ["images.unsplash.com", "i.imgur.com"],
   },
+  alias: {
+    "@components": "./src/components",
+  },
 };
 
-const mdxOptions = {
-  remarkPlugins: [remarkFrontmatter],
-  rehypePlugins: [rehypeHighlight],
-};
-
-export default withMDX(mdxOptions)(nextConfig);
+module.exports = withMDX(nextConfig);

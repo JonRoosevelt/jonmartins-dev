@@ -1,15 +1,11 @@
-import { ReactNode } from "react";
-
 const VideoFrame = (videoUrl: string, videoName: string) => {
   return (
     <iframe
-      width="320"
-      height="240"
-      src="https://www.youtube.com/embed/8bxXlv9vpik"
-      frameBorder="0"
-      allow="autoplay; encrypted-media"
-      allowFullScreen
-    />
+      src={"https://www.youtube.com/embed/" + videoUrl}
+      width={320}
+      height={240}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture full"
+    ></iframe>
   );
 };
 

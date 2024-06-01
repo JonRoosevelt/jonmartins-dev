@@ -11,22 +11,24 @@ import Section from "../../src/components/layouts/Section";
 
 const Blog = ({ blogPosts }: PostProps): ReactElement => {
   const parsedPosts: PostType[] = blogPosts.map((post) =>
-    JSON.parse(post.parsedMarkDown)
+    JSON.parse(post.parsedMarkDown),
   );
+
   const blogs = parsedPosts.map((post: PostType, index: number) => {
-    const path = `blog/${blogPosts[index].name}`;
+    const path = `blog/posts/${blogPosts[index].name}`;
     const postWithPath = { ...post, path };
     return (
-      <WrapItem flexWrap={"wrap"} key={post.content}>
-        <Center w={["300px", "350px"]}>
+      <WrapItem key={post.content} flex={{ base: "1 0 100%", md: "1 0 45%" }}>
+        <Center w="100%">
           <BlogCard {...postWithPath} />
         </Center>
       </WrapItem>
     );
   });
+
   return (
     <Section delay={0.3}>
-      <Wrap py={6} spacing={5} columns={[2, 2]}>
+      <Wrap py={6} spacing={5} justify="center">
         {blogs}
       </Wrap>
     </Section>
@@ -37,15 +39,17 @@ export default Blog;
 
 export const getStaticProps: GetStaticProps = () => {
   const blogPosts = fs
-    .readdirSync("posts")
+    .readdirSync(path.join("pages", "blog", "posts"))
     .map((fileName: string) => {
       const markdownWithMetaData = fs
-        .readFileSync(path.join("posts", fileName))
+        .readFileSync(path.join("pages", "blog", "posts", fileName))
         .toString();
 
       const parsedMarkDown = matter(markdownWithMetaData);
       const htmlString = marked(parsedMarkDown.content);
       const postDate = new Date(parsedMarkDown.data.date).getTime();
+      console.log("fileName", fileName);
+
       return {
         name: fileName.replace(".mdx", ""),
         parsedMarkDown: JSON.stringify(parsedMarkDown),
@@ -54,7 +58,6 @@ export const getStaticProps: GetStaticProps = () => {
       };
     })
     .sort((a, b) => b.date - a.date);
-  console.log(blogPosts);
   return {
     props: {
       blogPosts,
