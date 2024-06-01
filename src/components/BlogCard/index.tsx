@@ -1,6 +1,5 @@
 import { Avatar, useColorModeValue } from "@chakra-ui/react";
 import Image from "next/image";
-
 import {
   Box,
   Stack,
@@ -28,7 +27,8 @@ const Index = (post: PostType & Path): ReactElement => {
           overflow={"hidden"}
         >
           <Box
-            h={["200px", "210px"]}
+            h={0}
+            pb="56.25%" // 16:9 aspect ratio
             bg={"gray.100"}
             mt={-6}
             mx={-6}
@@ -38,9 +38,8 @@ const Index = (post: PostType & Path): ReactElement => {
             <Image
               alt={post.data.imageDescription}
               src={post.data.coverImage}
+              layout="fill"
               objectFit="cover"
-              width={"350em"}
-              height={"225vh"}
             />
           </Box>
           <Stack>
@@ -67,7 +66,6 @@ const Index = (post: PostType & Path): ReactElement => {
               maxH={["4rem", "8rem"]}
               display="block"
               textOverflow="ellipsis"
-              webkitorient="vertical"
               color={"gray.500"}
             >
               {post.data.previewText}
