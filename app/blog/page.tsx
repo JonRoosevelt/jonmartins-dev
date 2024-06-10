@@ -13,19 +13,12 @@ const Blog = (): ReactElement => {
 
   const blogs = parsedPosts.map((post: PostType, index: number) => {
     const path = `/blog/posts/${blogPosts[index].name}`;
-    return (
-      <div key={post.content} className="flex flex-col items-center">
-        <div className="w-full">
-          <BlogCard post={{ path, ...post }} />
-        </div>
-      </div>
-    );
+    return <BlogCard key={post.content} post={{ path, ...post }} />;
   });
 
   return (
-    // some tailwind that delays the loading of the component
-    <section>
-      <div className="py-6 space-y-5 justify-center">{blogs}</div>
+    <section className="w-full max-w-[736px] mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{blogs}</div>
     </section>
   );
 };
