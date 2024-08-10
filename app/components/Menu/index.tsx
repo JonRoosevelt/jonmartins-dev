@@ -90,11 +90,7 @@ export default function Menu(): ReactElement {
       </button>
       {isOpen && (
         <div
-          className={`absolute bg-gray-300 p-3 mt-1 right-0 text-right rounded shadow ${
-            isOpen
-              ? "transition-transform duration-600 ease-in-out transform translate-y-0"
-              : "hidden transform -translate-y-full"
-          }`}
+          className={`absolute bg-gray-300 p-3 mt-1 right-0 text-right rounded shadow transition-all duration-500`}
           style={{ maxHeight: isOpen ? "auto" : 0 }}
         >
           {MenuListItems.map((item, index) => (

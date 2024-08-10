@@ -1,4 +1,6 @@
 import { PostType } from "@/types";
+import Image from "next/image";
+import Link from "next/link";
 import React, { ReactElement } from "react";
 
 type BlogCardProps = {
@@ -9,11 +11,13 @@ type BlogCardProps = {
 const BlogCard = ({ post, path }: BlogCardProps): ReactElement => {
   return (
     <article key={path} className="flex w-30 max-h-100 bg-gray-500 rounded-xl">
-      <a href={path}>
+      <Link href={path}>
         <div>
           <div className="rounded-t-xl">
-            <img
+            <Image
               className="rounded-t-xl w-full object-cover h-60"
+              height={480}
+              width={720}
               src={post.data.coverImage}
               alt={post.data.imageDescription}
             />
@@ -28,8 +32,10 @@ const BlogCard = ({ post, path }: BlogCardProps): ReactElement => {
               </p>
             </div>
             <div className="flex gap-2">
-              <img
-                src="jon.jpeg"
+              <Image
+                height={30}
+                width={30}
+                src="/jon.jpeg"
                 alt="Author"
                 className="w-8 h-8 sm:w-16 sm:h-16 rounded-full object-cover"
               />
@@ -40,7 +46,7 @@ const BlogCard = ({ post, path }: BlogCardProps): ReactElement => {
             </div>
           </div>
         </div>
-      </a>
+      </Link>
     </article>
   );
 };

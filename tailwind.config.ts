@@ -23,13 +23,8 @@ const config: Config = {
       green: {
         500: "#319795",
       },
-    },
-    extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
+      white: "#fff",
+      darkblue: "#1a202c",
     },
   },
   plugins: [tailWindTypograhy],

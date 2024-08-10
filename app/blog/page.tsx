@@ -13,7 +13,7 @@ const Blog = (): ReactElement => {
 
   const blogs = parsedPosts.map((post: PostType, index: number) => {
     const path = `/blog/posts/${blogPosts[index].name}`;
-    return <BlogCard key={post.content} post={{ path, ...post }} />;
+    return <BlogCard key={post.content} post={post} path={path} />;
   });
 
   return (
@@ -27,13 +27,14 @@ export default Blog;
 
 const blogPosts = fs
   .readdirSync(path.join("app", "blog", "posts"))
+  .filter((fileName: string) => path.extname(fileName) !== ".tsx")
   .map((fileName: string) => {
     const markdownWithMetaData = fs
-      .readFileSync(path.join("app", "blog", "posts", fileName))
+      .readFileSync(path.join("app", "blog", "posts", fileName, "page.mdx"))
       .toString();
 
     const parsedMarkDown = matter(markdownWithMetaData);
-    const { isEmpty, ...parsedMDWithoutIsEmpty } = parsedMarkDown;
+    const parsedMDWithoutIsEmpty = parsedMarkDown;
     const htmlString = marked(parsedMarkDown.content);
     const postDate = new Date(parsedMarkDown.data.date).getTime();
 

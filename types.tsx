@@ -1,5 +1,6 @@
 export type PostType = {
   content: string;
+  slug: string;
   data: {
     title: string;
     description: string;

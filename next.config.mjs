@@ -1,5 +1,7 @@
 import remarkGfm from "remark-gfm";
+import remarkFrontmatter from "remark-frontmatter";
 import createMDX from "@next/mdx";
+import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -8,13 +10,15 @@ const nextConfig = {
   images: {
     domains: ["images.unsplash.com", "i.imgur.com"],
   },
+  experimental: {
+    mdxRs: false,
+  },
   // Optionally, add any other Next.js config below
 };
 
 const withMDX = createMDX({
-  // Add markdown plugins here, as desired
   options: {
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
     rehypePlugins: [],
   },
 });
