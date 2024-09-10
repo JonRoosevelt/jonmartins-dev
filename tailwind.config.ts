@@ -21,6 +21,7 @@ const config: Config = {
         700: "#111827",
       },
       green: {
+        100: "#B2F5EA",
         500: "#319795",
       },
       white: "#fff",
