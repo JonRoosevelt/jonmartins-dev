@@ -1,12 +1,12 @@
-"use client";
-import { useRouter } from "next/navigation";
-import React, { ReactElement, useState } from "react";
+import useScreenSize from "@/app/hooks/use-screen-size";
 import {
   IoLogoGithub,
   IoLogoInstagram,
   IoLogoLinkedin,
   IoLogoTwitter,
 } from "react-icons/io5";
+import MenuDesktop from "./menu-desktop";
+import MenuMobile from "./menu-mobile";
 
 type MenuItemType = {
   blank: boolean;
@@ -15,7 +15,7 @@ type MenuItemType = {
   icon: any;
 };
 
-const MenuListItems: MenuItemType[] = [
+export const MenuListItems: MenuItemType[] = [
   {
     blank: false,
     text: "HOME",
@@ -60,56 +60,9 @@ const MenuListItems: MenuItemType[] = [
   },
 ];
 
-export default function Menu(): ReactElement {
-  const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
+export default function Menu() {
+  const { screens, windowWidth } = useScreenSize();
+  const { md } = screens;
 
-  const handleSelectChange = (href: string) => {
-    setIsOpen(false);
-    router.push(href);
-  };
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleMenuLeave = () => {
-    setTimeout(() => {
-      setIsOpen(false);
-    }, 500); // Adjust the delay time as needed (in milliseconds)
-  };
-
-  return (
-    <div className="relative" onMouseLeave={handleMenuLeave}>
-      <button
-        className="text-gray-600 body-font bg-gray-300  text-center float-right rounded border-white border-2 w-10 h-10 focus:border-transparent focus:outline-none transition border-opacity-100 hover:border-opacity-0"
-        onClick={toggleDropdown}
-        // on click outside
-      >
-        &#9776; {/* ASCII code for hamburger icon */}
-      </button>
-      {isOpen && (
-        <div
-          className={`absolute bg-gray-300 p-3 mt-1 right-0 text-right rounded shadow transition-all duration-500`}
-          style={{ maxHeight: isOpen ? "auto" : 0 }}
-        >
-          {MenuListItems.map((item, index) => (
-            <div
-              key={index}
-              className="flex justify-end items-center text-gray-600 body-font p-2 cursor-pointer"
-              onClick={() => handleSelectChange(item.href)}
-            >
-              <button
-                className="flex items-center"
-                onClick={() => handleSelectChange(item.href)}
-              >
-                <span className="mr-2">{item.icon}</span>
-                {item.text}
-              </button>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
+  return windowWidth > md ? <MenuDesktop /> : <MenuMobile />;
 }
