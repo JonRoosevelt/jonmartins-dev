@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div>
-      <div>
+    <div className="md:w-full max-w-[736px] md:mx-auto">
+      <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 lg:items-center">
         <Image
           src="/jon.jpeg"
           alt="Jon Martins"
@@ -11,8 +11,10 @@ export default function Home() {
           height={100}
           className="w-[100px] h-[100px] rounded-full object-cover antialiased"
         />
-        <h3 className="font-bold text-3xl">Jon Martins</h3>
-        <p>Artist / Developer / Designer</p>
+        <div className="flex flex-col">
+          <h3 className="font-bold text-3xl">Jon Martins</h3>
+          <p>Artist / Developer / Designer</p>
+        </div>
       </div>
       <div className="my-16">
         <h1 className="text-3xl font-bold">'Sup?!</h1>

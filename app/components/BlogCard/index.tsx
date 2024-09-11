@@ -10,7 +10,10 @@ type BlogCardProps = {
 
 const BlogCard = ({ post, path }: BlogCardProps): ReactElement => {
   return (
-    <article key={path} className="flex w-30 max-h-100 bg-gray-500 rounded-xl">
+    <article
+      key={path}
+      className="flex w-30 max-h-100 bg-gray-500 rounded-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 hover:drop-shadow-xl"
+    >
       <Link href={path}>
         <div>
           <div className="rounded-t-xl">
@@ -33,11 +36,11 @@ const BlogCard = ({ post, path }: BlogCardProps): ReactElement => {
             </div>
             <div className="flex gap-2">
               <Image
-                height={30}
-                width={30}
+                height={100}
+                width={100}
                 src="/jon.jpeg"
                 alt="Author"
-                className="w-8 h-8 sm:w-16 sm:h-16 rounded-full object-cover"
+                className="w-8 h-8 sm:w-16 sm:h-16 rounded-full object-cover antialiased"
               />
               <div className="space-y-1 text-xs sm:text-sm">
                 <p className="font-regular">{post.data.author}</p>

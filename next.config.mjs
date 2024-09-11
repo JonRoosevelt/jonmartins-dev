@@ -8,7 +8,10 @@ const nextConfig = {
   // Configure `pageExtensions`` to include MDX files
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   images: {
-    domains: ["images.unsplash.com", "i.imgur.com"],
+    remotePatterns: [
+      { protocol: "https", hostname: "images.unsplash.com", port: "" },
+      { protocol: "https", hostname: "i.imgur.com", port: "" },
+    ],
   },
   experimental: {
     mdxRs: false,
