@@ -13,7 +13,7 @@ export default function Footer() {
 
   return (
     <div className="flex bg-white bg-opacity-20 w-full h-30 justify-center">
-      <div className="grid grid-cols-2 md:grid-cols-3 my-8 md:w-[736px] sm:w-full justify-between sm:mx-8 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 m-8 md:w-[736px] sm:w-full justify-between gap-4">
         <div className="[&>a]:text-wrap [&>a]:hover:text-green-100">
           <h4 className="text-lg font-bold text-green-100">Home</h4>
           <ul>
