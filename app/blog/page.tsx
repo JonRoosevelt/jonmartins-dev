@@ -1,10 +1,7 @@
 import { PostType } from "@/types";
-import fs from "fs";
-import matter from "gray-matter";
-import { marked } from "marked";
-import path from "path";
 import React, { ReactElement } from "react";
 import BlogCard from "../components/BlogCard";
+import { blogPosts } from "@/app/lib/blog-posts";
 
 const Blog = (): ReactElement => {
   const parsedPosts: PostType[] = blogPosts.map((post) =>
@@ -24,25 +21,3 @@ const Blog = (): ReactElement => {
 };
 
 export default Blog;
-
-const blogPosts = fs
-  .readdirSync(path.join("app", "blog", "posts"))
-  .filter((fileName: string) => path.extname(fileName) !== ".tsx")
-  .map((fileName: string) => {
-    const markdownWithMetaData = fs
-      .readFileSync(path.join("app", "blog", "posts", fileName, "page.mdx"))
-      .toString();
-
-    const parsedMarkDown = matter(markdownWithMetaData);
-    const parsedMDWithoutIsEmpty = parsedMarkDown;
-    const htmlString = marked(parsedMarkDown.content);
-    const postDate = new Date(parsedMarkDown.data.date).getTime();
-
-    return {
-      name: fileName.replace(".mdx", ""),
-      parsedMarkDown: JSON.stringify(parsedMDWithoutIsEmpty),
-      htmlString,
-      date: postDate,
-    };
-  })
-  .sort((a, b) => b.date - a.date);

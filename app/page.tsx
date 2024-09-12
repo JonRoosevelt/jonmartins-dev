@@ -17,7 +17,9 @@ export default function Home() {
         </div>
       </div>
       <div className="my-16">
-        <h1 className="text-3xl font-bold">&apos;Sup?!</h1>
+        <h1 id="sup" className="text-3xl font-bold">
+          &apos;Sup?!
+        </h1>
         <br />
         <br />
         <p>Hello, my name is Jon Martins 👋🏽</p>
@@ -49,7 +51,9 @@ export default function Home() {
         <p>See you! 👀</p>
         <br />
         <br />
-        <h3 className="text-xl font-bold">History</h3>
+        <h3 id="history" className="text-xl font-bold">
+          History
+        </h3>
         <br />
         <p>
           I was born in Brazil, a son of the 80&apos;s. I started drawing as a
@@ -83,7 +87,9 @@ export default function Home() {
         </p>
         <br />
         <br />
-        <h3 className="text-xl font-bold">Stack</h3>
+        <h3 id="stack" className="text-xl font-bold">
+          Stack
+        </h3>
         <br />
         <p>
           As I said in my introduction, I&apos;m a technology agnostic. But that
@@ -91,7 +97,7 @@ export default function Home() {
           of them:
         </p>
         <br />
-        <div className="grid grid-cols-4">
+        <div className="grid grid-cols-3 md:grid-cols-4">
           <div>
             <h4 className="text-lg font-bold text-green-100">Frontend</h4>
             <ul>
