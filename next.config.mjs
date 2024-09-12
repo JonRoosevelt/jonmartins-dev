@@ -1,4 +1,3 @@
-import remarkGfm from "remark-gfm";
 import remarkFrontmatter from "remark-frontmatter";
 import createMDX from "@next/mdx";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";

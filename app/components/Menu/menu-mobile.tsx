@@ -90,13 +90,13 @@ export default function MenuMobile(): ReactElement {
       </button>
       {isOpen && (
         <div
-          className={`absolute bg-gray-300 p-3 mt-1 right-0 text-right rounded shadow transition-all duration-500`}
+          className={`absolute bg-gray-300 p-3 mt-1 right-0 text-right rounded shadow transition-all duration-500 z-10`}
           style={{ maxHeight: isOpen ? "auto" : 0 }}
         >
           {MenuListItems.map((item, index) => (
             <div
               key={index}
-              className="flex justify-end items-center text-gray-600 body-font p-2 cursor-pointer"
+              className="flex justify-end items-center text-gray-600 body-font p-2 cursor-pointer hover:bg-opacity-10 hover:bg-white"
               onClick={() => handleSelectChange(item.href)}
             >
               <button
