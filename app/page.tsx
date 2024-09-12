@@ -117,9 +117,7 @@ export default function Home() {
             </ul>
           </div>
           <div>
-            <h4 className="text-lg font-bold text-green-100">
-              Other Technologies
-            </h4>
+            <h4 className="text-lg font-bold text-green-100">Other</h4>
             <ul>
               <li>MongoDB</li>
               <li>Jest</li>

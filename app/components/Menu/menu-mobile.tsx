@@ -82,7 +82,7 @@ export default function MenuMobile(): ReactElement {
   return (
     <div className="relative" onMouseLeave={handleMenuLeave}>
       <button
-        className="text-gray-600 body-font bg-gray-300 hover:bg-white hover:bg-opacity-20 text-center float-right rounded w-10 h-10 focus:border-transparent focus:outline-none transition"
+        className="text-gray-600 body-font bg-gray-300 hover:bg-white hover:bg-opacity-20 text-center float-right rounded w-10 h-10 focus:border-transparent focus:outline-none transition md:hidden"
         onClick={toggleDropdown}
         // on click outside
       >

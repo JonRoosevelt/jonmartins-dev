@@ -7,14 +7,8 @@ import {
 } from "react-icons/io5";
 
 export default function MenuDesktop() {
-  const isHidden = typeof window !== "undefined" && window.innerWidth < 768;
-
   return (
-    <div
-      className={`mt-13 mb-6 rounded-lg bg-white bg-opacity-10 p-3 text-center items-center xl:w-[992px] md:w-[768px] w-full ${
-        isHidden ? "hidden" : ""
-      }`}
-    >
+    <div className="mt-13 mb-6 mx-6 rounded-lg bg-white bg-opacity-10 p-3 text-center items-center xl:w-[992px] md:w-[768px] w-full hidden md:block">
       <div className="flex flex-col md:flex-row justify-between items-center">
         <div className="flex space-x-10">
           <a href="/" className="hover:text-teal-400">

@@ -1,4 +1,3 @@
-import useScreenSize from "@/app/hooks/use-screen-size";
 import {
   IoLogoGithub,
   IoLogoInstagram,
@@ -61,8 +60,10 @@ export const MenuListItems: MenuItemType[] = [
 ];
 
 export default function Menu() {
-  const { screens, windowWidth } = useScreenSize();
-  const { md } = screens;
-
-  return windowWidth > md ? <MenuDesktop /> : <MenuMobile />;
+  return (
+    <>
+      <MenuDesktop />
+      <MenuMobile />
+    </>
+  );
 }

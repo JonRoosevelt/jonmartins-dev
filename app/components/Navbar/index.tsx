@@ -1,15 +1,10 @@
 "use client";
-import React, { ReactElement } from "react";
-import Menu from "../Menu";
+import { ReactElement } from "react";
 import Glitch from "../Glitch";
 import Logo from "../Logo";
-import useScreenSize from "@/app/hooks/use-screen-size";
+import Menu from "../Menu";
+
 export default function Navbar(): ReactElement {
-  const { screens, windowWidth } = useScreenSize();
-  const { md } = screens;
-  const desktop = (md: number, windowWidth: number) => {
-    return windowWidth > md;
-  };
   return (
     <nav className="flex flex-col text-gray-600 body-font mb-6">
       <div
