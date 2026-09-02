@@ -140,6 +140,7 @@ export default function Globe({
       canvas.height = height * dpr;
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
     resize();
     const ro = new ResizeObserver(resize);
@@ -155,7 +156,7 @@ export default function Globe({
       const z = Math.cos(phi) * Math.cos(lam);
       const y2 = y * Math.cos(t) - z * Math.sin(t);
       const z2 = y * Math.sin(t) + z * Math.cos(t);
-      const R = Math.min(width, height) * 0.36;
+      const R = Math.min(width, height) * 0.38;
       return {
         x: width / 2 + R * x,
         y: height / 2 - R * y2,
@@ -187,7 +188,7 @@ export default function Globe({
       }
     ) => {
       const pts = arcPoints(from, to);
-      const R = Math.min(width, height) * 0.36;
+      const R = Math.min(width, height) * 0.38;
       const alt = opts.altitude ?? 0.1;
       ctx.save();
       ctx.strokeStyle = opts.color;
@@ -306,7 +307,7 @@ export default function Globe({
       ctx.clearRect(0, 0, width, height);
       const cx = width / 2;
       const cy = height / 2;
-      const R = Math.min(width, height) * 0.36;
+      const R = Math.min(width, height) * 0.38;
 
       const glow = ctx.createRadialGradient(cx, cy, R * 0.2, cx, cy, R * 1.7);
       glow.addColorStop(0, "rgba(0, 212, 255, 0.14)");
