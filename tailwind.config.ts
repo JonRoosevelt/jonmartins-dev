@@ -29,6 +29,28 @@ const config: Config = {
       darkblue: "#1a202c",
     },
     extend: {
+      colors: {
+        cyber: {
+          bg: "#050505",
+          surface: "#131313",
+          "surface-low": "#1c1b1b",
+          "surface-container": "#201f1f",
+          "surface-high": "#2a2a2a",
+          "surface-highest": "#353534",
+          primary: "#00d4ff",
+          "primary-soft": "#a8e8ff",
+          neon: "#2ff801",
+          magenta: "#ff0055",
+          "on-surface": "#e5e2e1",
+          "on-surface-variant": "#bbc9cf",
+          outline: "#859398",
+          "outline-variant": "#3c494e",
+        },
+      },
+      fontFamily: {
+        grotesk: ["var(--font-grotesk)", "sans-serif"],
+        spacemono: ["var(--font-spacemono)", "monospace"],
+      },
       keyframes: {
         stack: {
           "0%": {

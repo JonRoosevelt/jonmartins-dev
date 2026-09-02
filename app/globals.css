@@ -21,3 +21,22 @@ body {
     text-wrap: balance;
   }
 }
+
+.cyber-scroll::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+.cyber-scroll::-webkit-scrollbar-track {
+  background: #131313;
+}
+.cyber-scroll::-webkit-scrollbar-thumb {
+  background: #3c494e;
+}
+.cyber-scroll::-webkit-scrollbar-thumb:hover {
+  background: #00d4ff;
+}
+
+.cyber-selection ::selection {
+  background: #00d4ff;
+  color: #050505;
+}

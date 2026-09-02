@@ -4,11 +4,11 @@ import fs from "fs";
 import path from "path";
 
 export const blogPosts = fs
-  .readdirSync(path.join("app", "blog", "posts"))
+  .readdirSync(path.join("app", "(site)", "blog", "posts"))
   .filter((fileName: string) => path.extname(fileName) !== ".tsx")
   .map((fileName: string) => {
     const markdownWithMetaData = fs
-      .readFileSync(path.join("app", "blog", "posts", fileName, "page.mdx"))
+      .readFileSync(path.join("app", "(site)", "blog", "posts", fileName, "page.mdx"))
       .toString();
 
     const parsedMarkDown = matter(markdownWithMetaData);
