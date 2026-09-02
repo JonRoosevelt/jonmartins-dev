@@ -1,6 +1,6 @@
 import { PostType } from "@/types";
 import React, { ReactElement } from "react";
-import BlogCard from "../components/BlogCard";
+import BlogCard from "../../components/BlogCard";
 import { blogPosts } from "@/app/lib/blog-posts";
 
 const Blog = (): ReactElement => {

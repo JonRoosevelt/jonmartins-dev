@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
+const grotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-grotesk",
+});
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-spacemono",
+});
 
 export const metadata: Metadata = {
-  title: "Jon Martins - Artist / Developer / Designer",
+  title: "Jon Martins — Senior Software Engineer",
   description:
-    "A Portfolio/Blog website. React, Next.js, TailwindCSS, Typescript, Web Development",
+    "Interactive career globe. Node.js, TypeScript, React, Python. From São Paulo to Lisbon — remote connections, proxies and relocations.",
 };
 
 export default function RootLayout({
@@ -22,12 +29,10 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
-      <body className={`${inter.className} bg-darkblue`}>
-        <div className="m-6">
-          <Navbar />
-          {children}
-        </div>
-        <Footer />
+      <body
+        className={`${inter.className} ${grotesk.variable} ${spaceMono.variable} bg-darkblue`}
+      >
+        {children}
       </body>
     </html>
   );

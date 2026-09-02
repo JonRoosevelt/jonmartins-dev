@@ -18,13 +18,13 @@ export default function Footer() {
           <h4 className="text-lg font-bold text-green-100">Home</h4>
           <ul>
             <li className="hover:text-green-100">
-              <Link href={"/#sup"}>{`'Sup`}</Link>
+              <Link href={"/about#sup"}>{`'Sup`}</Link>
             </li>
             <li className="hover:text-green-100">
-              <Link href={"/#history"}>{`History`}</Link>
+              <Link href={"/about#history"}>{`History`}</Link>
             </li>
             <li className="hover:text-green-100">
-              <Link href={"/#stack"}>{`Stack`}</Link>
+              <Link href={"/about#stack"}>{`Stack`}</Link>
             </li>
           </ul>
         </div>
