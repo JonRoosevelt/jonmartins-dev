@@ -88,6 +88,10 @@ export default function Globe({
     markers: [] as MarkerHit[],
     flight: null as FlightState | null,
     selectedIndex,
+    zoom: 1,
+    pinching: false,
+    pinchStartDist: 0,
+    pinchStartZoom: 1,
   });
 
   useEffect(() => {
@@ -146,6 +150,9 @@ export default function Globe({
     const ro = new ResizeObserver(resize);
     ro.observe(container);
 
+    const baseRadius = () =>
+      Math.min(width, height) * 0.38 * stateRef.current.zoom;
+
     const project = (lat: number, lng: number): ScreenPoint => {
       const { rot } = stateRef.current;
       const lam = (lng - rot.lng) * DEG;
@@ -156,7 +163,7 @@ export default function Globe({
       const z = Math.cos(phi) * Math.cos(lam);
       const y2 = y * Math.cos(t) - z * Math.sin(t);
       const z2 = y * Math.sin(t) + z * Math.cos(t);
-      const R = Math.min(width, height) * 0.38;
+      const R = baseRadius();
       return {
         x: width / 2 + R * x,
         y: height / 2 - R * y2,
@@ -188,7 +195,6 @@ export default function Globe({
       }
     ) => {
       const pts = arcPoints(from, to);
-      const R = Math.min(width, height) * 0.38;
       const alt = opts.altitude ?? 0.1;
       ctx.save();
       ctx.strokeStyle = opts.color;
@@ -307,7 +313,7 @@ export default function Globe({
       ctx.clearRect(0, 0, width, height);
       const cx = width / 2;
       const cy = height / 2;
-      const R = Math.min(width, height) * 0.38;
+      const R = baseRadius();
 
       const glow = ctx.createRadialGradient(cx, cy, R * 0.2, cx, cy, R * 1.7);
       glow.addColorStop(0, "rgba(0, 212, 255, 0.14)");
@@ -548,19 +554,47 @@ export default function Globe({
 
     raf = requestAnimationFrame(render);
 
+    const pointers = new Map<number, { x: number; y: number }>();
+    const clampZoom = (z: number) => Math.max(1, Math.min(3.5, z));
+    const pinchDist = () => {
+      const pts = [...pointers.values()];
+      return Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
+    };
+
     const onPointerDown = (e: PointerEvent) => {
       const s = stateRef.current;
+      pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      canvas.setPointerCapture(e.pointerId);
+      if (pointers.size === 2) {
+        s.pinching = true;
+        s.dragging = false;
+        s.moved = true;
+        s.pinchStartDist = pinchDist();
+        s.pinchStartZoom = s.zoom;
+        return;
+      }
       s.dragging = true;
       s.moved = false;
       s.tween = null;
       s.dragStart = { x: e.clientX, y: e.clientY, lng: s.rot.lng, phi: s.rot.phi };
-      canvas.setPointerCapture(e.pointerId);
     };
     const onPointerMove = (e: PointerEvent) => {
       const s = stateRef.current;
       const rect = canvas.getBoundingClientRect();
       const mx = e.clientX - rect.left;
       const my = e.clientY - rect.top;
+
+      if (pointers.has(e.pointerId)) {
+        pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      }
+
+      if (s.pinching && pointers.size >= 2) {
+        const d = pinchDist();
+        if (d > 0 && s.pinchStartDist > 0) {
+          s.zoom = clampZoom((s.pinchStartZoom * d) / s.pinchStartDist);
+        }
+        return;
+      }
 
       if (s.dragging) {
         const dx = e.clientX - s.dragStart.x;
@@ -582,6 +616,11 @@ export default function Globe({
     };
     const onPointerUp = (e: PointerEvent) => {
       const s = stateRef.current;
+      pointers.delete(e.pointerId);
+      if (s.pinching) {
+        if (pointers.size < 2) s.pinching = false;
+        return;
+      }
       const wasDragging = s.dragging;
       s.dragging = false;
       if (!wasDragging || s.moved) return;
@@ -595,10 +634,23 @@ export default function Globe({
         }
       }
     };
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      const s = stateRef.current;
+      s.zoom = clampZoom(s.zoom * (1 - e.deltaY * 0.0012));
+    };
+    const onDblClick = () => {
+      stateRef.current.zoom = 1;
+    };
+    const onGestureStart = (e: Event) => e.preventDefault();
 
     canvas.addEventListener("pointerdown", onPointerDown);
     canvas.addEventListener("pointermove", onPointerMove);
     canvas.addEventListener("pointerup", onPointerUp);
+    canvas.addEventListener("pointercancel", onPointerUp);
+    canvas.addEventListener("wheel", onWheel, { passive: false });
+    canvas.addEventListener("dblclick", onDblClick);
+    canvas.addEventListener("gesturestart", onGestureStart);
 
     return () => {
       cancelAnimationFrame(raf);
@@ -606,6 +658,10 @@ export default function Globe({
       canvas.removeEventListener("pointerdown", onPointerDown);
       canvas.removeEventListener("pointermove", onPointerMove);
       canvas.removeEventListener("pointerup", onPointerUp);
+      canvas.removeEventListener("pointercancel", onPointerUp);
+      canvas.removeEventListener("wheel", onWheel);
+      canvas.removeEventListener("dblclick", onDblClick);
+      canvas.removeEventListener("gesturestart", onGestureStart);
     };
   }, [onSelect]);
 
